@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Home</title>
+	<link rel="stylesheet" href="styles/styles.css" type="text/css">
+	<link rel="stylesheet" href="styles/form.css">
+	<meta name="generator" content="Geany 2.1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<header>
+		<h1>Clima Cordoba</h1>
+		<nav>
+			<ul>
+				<li><button class='button-link'><a href="./index.html">home</a></button></li>
+				<li><button class='button-link'><a href="./register.html">registrarse</a></button></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<h2 class='title'>Ciudades</h2>
+		<ul id="ul">
+		</ul>
+
+		<aside>
+			<form class="form" id="form_cities">
+				<label for="city" class="label_form" id="label_form_cities">Ciudad</label>
+				<input 
+					name="city" 
+					id="ciudad" 
+					type="text" 
+					class="input_form" 
+					required
+					id="input_form_cities" 
+				/>
+				<button class="button_form" type="submit">Mandar</button>
+			</form>
+		</aside>
+	</main>
+	<script src="js/addChildToList.js"></script>
+
+</body>
+
+</html>
