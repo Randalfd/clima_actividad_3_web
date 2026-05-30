@@ -3,9 +3,12 @@ const form = document.querySelector('#form_cities');
 const cityInput = document.querySelector("input[name='city']");
 
 let elements = loadFromLocalStorage() || ["Rio Tercero", "Cordoba Capital", "Corralito"];
+form.addEventListener("submit" , (e) => {
+  createElementForm(e,cityInput);
+});
 
-function renderList() {
-  ul.innerHTML = '';
+function renderList(){
+  ul.innerHtml = '';
   const fragment = document.createDocumentFragment();
   elements.forEach((city) => {
    newLiElement(fragment,city);
@@ -15,10 +18,6 @@ function renderList() {
 
 renderList();
 
-form.addEventListener('submit', (e) => {
-  createElementForm(e,cityInput);
-});
-
 ul.addEventListener('click', (e) => {
   const button = e.target;
   const li = button.closest('li');
@@ -27,22 +26,20 @@ ul.addEventListener('click', (e) => {
 
   if(e.target.classList.contains(`remove_button`)) {
     li.remove();
-    saveToLocalStorage();
   }
   else if(e.target.classList.contains('edit_button')) {
    const span = li.querySelector('.li-content');
     const text = prompt('editando', span.textContent);
     if(text) span.textContent = text;
-    saveToLocalStorage();
   }
 });
 
 function saveToLocalStorage() {
   const cities = Array.from(ul.querySelectorAll('.li-content')).map(span => span.textContent);
-  localStorage.setItem('cities',JSON.stringify(cities));
+  localStorage.setItem('cities',JSON.stringfly(cities));
 }
 function loadFromLocalStorage() {
-  const storedItems = localStorage.getItem('cities');
+  cosnt storedItems = localStorage.getItems('cities');
   if(storedItems){
     return JSON.parse(storedItems);
   } else return null;
@@ -75,7 +72,6 @@ function createElementForm(e,cityInput) {
     newLiElement(newElement,cityInput.value);
     ul.appendChild(newElement);
     cityInput.value = '';
-
     saveToLocalStorage();
   }
 
